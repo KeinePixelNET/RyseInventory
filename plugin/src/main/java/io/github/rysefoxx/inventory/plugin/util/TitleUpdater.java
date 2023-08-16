@@ -93,6 +93,7 @@ public final class TitleUpdater {
     @SuppressWarnings("UnstableApiUsage")
     public static void updateInventory(Player player, String newTitle) {
         Preconditions.checkArgument(player != null, "Cannot update inventory to null player.");
+        Preconditions.checkArgument(newTitle != null, "The new title can't be null.");
 
         try {
             if (newTitle.length() > 32) {
@@ -113,7 +114,7 @@ public final class TitleUpdater {
             // Create new title.
             Object title;
             if (ReflectionUtils.supports(19)) {
-                title = ReflectionUtils.toIChatBaseComponentPlain(newTitle);
+                title = literal.invoke(newTitle);
             } else {
                 title = chatMessage.invoke(newTitle, DUMMY_COLOR_MODIFIERS);
             }
@@ -145,7 +146,7 @@ public final class TitleUpdater {
             if (container == null) return;
 
             // If the container was added in a newer version than the current, return.
-            if (container.getContainerVersion() > ReflectionUtils.VER && useContainers()) {
+            if (container.getContainerVersion() > ReflectionUtils.MINOR_NUMBER && useContainers()) {
                 PLUGIN.getLogger().warning("This container doesn't work on your current version.");
                 return;
             }
@@ -242,7 +243,7 @@ public final class TitleUpdater {
      * @return whether to use containers.
      */
     private static boolean useContainers() {
-        return ReflectionUtils.VER > 13;
+        return ReflectionUtils.MINOR_NUMBER > 13;
     }
 
     /**
@@ -320,7 +321,7 @@ public final class TitleUpdater {
         public @Nullable Object getObject() {
             try {
                 if (!useContainers()) return getMinecraftName();
-                int version = ReflectionUtils.VER;
+                int version = ReflectionUtils.MINOR_NUMBER;
                 String name = (version == 14 && this == CARTOGRAPHY_TABLE) ? "CARTOGRAPHY" : name();
                 // Since 1.17, containers go from "a" to "x".
                 if (version > 16) name = String.valueOf(alphabet[ordinal()]);
