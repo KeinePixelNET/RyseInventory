@@ -100,7 +100,10 @@ public final class TitleUpdater {
             }
 
             if (ReflectionUtils.supports(20)) {
-                throw new UnsupportedOperationException("Inventories can be updated directly from the InventoryView.");
+                InventoryView open = player.getOpenInventory();
+                if (UNOPENABLES.contains(open.getType().name())) return;
+                open.setTitle(newTitle);
+                return;
             }
 
             // Get EntityPlayer from CraftPlayer.
