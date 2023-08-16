@@ -29,7 +29,7 @@ dependencies {
 
 publishing {
     publications {
-        register("mavenJava", MavenPublication::class) {
+        create<MavenPublication>("shadow") {
             groupId = "io.github.rysefoxx.inventory"
             artifactId = "RyseInventory-Plugin"
             version = "${project.version}"
@@ -40,7 +40,9 @@ publishing {
                 description = "Inventory System"
                 url = "https://github.com/Rysefoxx/RyseInventory"
             }
-            from(components["java"])
+            project.extensions.configure<com.github.jengelman.gradle.plugins.shadow.ShadowExtension>() {
+                component(this@create)
+            }
         }
     }
     repositories {
