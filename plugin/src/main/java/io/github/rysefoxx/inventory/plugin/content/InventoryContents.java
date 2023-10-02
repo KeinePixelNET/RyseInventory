@@ -2364,8 +2364,9 @@ public class InventoryContents {
 
     /**
      * Fills the inventory diagonally based on the slot.
+     *
      * @param startSlot The slot where the diagonal should start.
-     * @param item The item to be placed.
+     * @param item      The item to be placed.
      * @throws IllegalArgumentException if slot greater than 53 or slot greater than inventory size
      */
     public void fillDiagonal(@Nonnegative int startSlot,
@@ -2384,8 +2385,9 @@ public class InventoryContents {
 
     /**
      * Fills the inventory diagonally based on the slot.
+     *
      * @param startSlot The slot where the diagonal should start.
-     * @param item The item to be placed.
+     * @param item      The item to be placed.
      * @throws IllegalArgumentException if slot greater than 53 or slot greater than inventory size
      */
     public void fillDiagonal(@Nonnegative int startSlot,
@@ -2395,9 +2397,10 @@ public class InventoryContents {
 
     /**
      * Fills the inventory diagonally based on the slot.
+     *
      * @param startSlot The slot where the diagonal should start.
-     * @param item The item to be placed.
-     * @param type The type of the item
+     * @param item      The item to be placed.
+     * @param type      The type of the item
      * @throws IllegalArgumentException if slot greater than 53 or slot greater than inventory size
      */
     public void fillDiagonal(@Nonnegative int startSlot,
@@ -3645,12 +3648,17 @@ public class InventoryContents {
      * @param page The page to clear
      */
     private void clear(@Nonnegative int page) {
-        for (int i = 0; i < this.pagination.getInventoryData().size(); i++) {
+        int size = this.pagination.getInventoryData().size();
+        int[] slots = new int[size];
+        for (int i = 0; i < size; i++) {
             IntelligentItemData itemData = this.pagination.getInventoryData().get(i);
             if (itemData.getPage() != page) continue;
 
-            int finalI = i;
-            get(i).ifPresent(item -> removeItemWithConsumer(finalI));
+            int slot = itemData.getModifiedSlot();
+            slots[i] = slot;
+        }
+        for (int slot : slots) {
+            get(slot).ifPresent(item -> removeItemWithConsumer(slot));
         }
     }
 
