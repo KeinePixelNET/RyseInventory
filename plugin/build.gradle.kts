@@ -17,7 +17,7 @@ dependencies {
     implementation(project(":api"))
     implementation("net.wesjd:anvilgui:1.6.4-SNAPSHOT")
 
-    compileOnly("net.kyori:adventure-platform-bukkit:4.2.0")
+    compileOnly("net.kyori:adventure-platform-bukkit:4.3.1")
     compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly("org.apache.commons:commons-lang3:3.12.0")
     compileOnly("org.jetbrains:annotations:23.1.0")
