@@ -20,7 +20,7 @@ dependencies {
     compileOnly("net.kyori:adventure-platform-bukkit:4.3.1")
     compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
     compileOnly("org.apache.commons:commons-lang3:3.12.0")
-    compileOnly("org.jetbrains:annotations:23.1.0")
+    compileOnly("org.jetbrains:annotations:24.0.1")
     compileOnly("com.google.code.findbugs:jsr305:3.0.2")
 
     annotationProcessor("org.projectlombok:lombok:1.18.24")
