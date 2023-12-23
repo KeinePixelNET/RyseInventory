@@ -1729,7 +1729,7 @@ public class InventoryContents {
         InventoryContents contents = new InventoryContents(this.player, this.inventory, this.plugin);
         this.inventory.getManager().setContents(this.player.getUniqueId(), contents);
 
-        if (this.pagination.page() < contents.pagination.lastPage()) {
+        if (this.pagination.page() <= contents.pagination.lastPage()) {
             contents.pagination.page(this.pagination.page() - 1);
         }
 
