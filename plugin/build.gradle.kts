@@ -15,16 +15,15 @@ dependencies {
     implementation(project(":v1_17"))
     implementation(project(":v1_16"))
     implementation(project(":api"))
-    implementation("net.wesjd:anvilgui:1.6.4-SNAPSHOT")
+    implementation("net.wesjd:anvilgui:${property("anvil-api")}")
 
-    compileOnly("net.kyori:adventure-platform-bukkit:4.3.1")
-    compileOnly("org.spigotmc:spigot-api:1.20.1-R0.1-SNAPSHOT")
-    compileOnly("org.apache.commons:commons-lang3:3.12.0")
-    compileOnly("org.jetbrains:annotations:24.0.1")
-    compileOnly("com.google.code.findbugs:jsr305:3.0.2")
-
-    annotationProcessor("org.projectlombok:lombok:1.18.24")
-    compileOnly("org.projectlombok:lombok:1.18.24")
+    compileOnly("net.kyori:adventure-platform-bukkit:${property("adventure-bukkit")}")
+    compileOnly("org.spigotmc:spigot-api:${property("spigot")}")
+    compileOnly("org.apache.commons:commons-lang3:${property("apache-commons")}")
+    compileOnly("org.jetbrains:annotations:${property("jetbrains-annotations")}")
+    compileOnly("com.google.code.findbugs:jsr305:${property("google-findbugs")}")
+    annotationProcessor("org.projectlombok:lombok:${property("lombok")}")
+    compileOnly("org.projectlombok:lombok:${property("lombok")}")
 }
 
 publishing {
@@ -47,11 +46,11 @@ publishing {
     }
     repositories {
         maven {
-            name = "nexus"
-            url = uri("https://repo.networkmanager.xyz/repository/maven-networkmanager/")
+            name = "koboo"
+            url = uri("https://reposilite.koboo.eu/entix")
             credentials {
-                username = project.property("NEXUS_USERNAME").toString()
-                password = project.property("NEXUS_PASSWORD").toString()
+                username = System.getenv("REPO_USER")
+                password = System.getenv("REPO_TOKEN")
             }
         }
     }
