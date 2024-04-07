@@ -47,7 +47,7 @@ publishing {
     repositories {
         maven {
             name = "koboo"
-            url = uri("https://reposilite.koboo.eu/entix")
+            url = uri("https://reposilite.koboo.eu/releases")
             credentials {
                 username = System.getenv("REPO_USER")
                 password = System.getenv("REPO_TOKEN")
