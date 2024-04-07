@@ -1,4 +1,6 @@
-# RyseInventory 1.8-1.19 ![](https://i.imgur.com/BS3gwxL.png)
+# RyseInventory 1.8-1.20.4 ![](https://i.imgur.com/BS3gwxL.png)
+
+Original: [RyseInventory](https://github.com/RyseInventory/RyseInventory)
 
 Inventory System inspired by [SmartInventory](https://github.com/MinusKube/SmartInvs)!
 
@@ -52,10 +54,10 @@ _In the newer versions you can specify the API in your plugin.yml under Librarie
 ```
 repositories {
     mavenCentral()
-    maven { url "https://s01.oss.sonatype.org/content/groups/public/" }
+    maven { url "https://reposilite.koboo.eu/releases" }
 }
 dependencies {
-    implementation 'io.github.rysefoxx.inventory:RyseInventory-Plugin:1.6.5'
+    implementation 'io.github.rysefoxx.inventory:RyseInventory-Plugin:1.6.11'
 }
 ```
 
@@ -64,10 +66,10 @@ dependencies {
 ```
 repositories {
     mavenCentral()
-    maven { url = uri("https://s01.oss.sonatype.org/content/groups/public/") }
+    maven { url = uri("https://reposilite.koboo.eu/releases") }
 }
 dependencies {
-    implementation("io.github.rysefoxx.inventory:RyseInventory-Plugin:1.6.5")
+    implementation("io.github.rysefoxx.inventory:RyseInventory-Plugin:1.6.11")
 }
 ```
 
@@ -77,14 +79,14 @@ dependencies {
 <repositories>
     <repository>
         <id>sonatype</id>
-        <url>"https://s01.oss.sonatype.org/content/groups/public/"</url>
+        <url>"https://reposilite.koboo.eu/releases"</url>
     </repository>
 </repositories>
 
 <dependency>
   <groupId>io.github.rysefoxx.inventory</groupId>
   <artifactId>RyseInventory-Plugin</artifactId>
-  <version>1.6.5</version>
+  <version>1.6.11</version>
 </dependency>
 ```
 
